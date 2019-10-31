@@ -1,0 +1,2320 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>chronomap 0.1.0 | Documentation</title>
+  <meta name='description' content='provides functionality for syncing and interacting with a leaflet map and a vis-timeline'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' rel='stylesheet'>
+  <link href='assets/style.css' rel='stylesheet'>
+  <link href='assets/github.css' rel='stylesheet'>
+  <link href='assets/split.css' rel='stylesheet'>
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>chronomap</h3>
+          <div class='mb1'><code>0.1.0</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#createdmarkerpropertiestype'
+                  class="">
+                  CreatedMarkerPropertiesType
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#createdtimelineitemtype'
+                  class="">
+                  CreatedTimelineItemType
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#onclickcallbacks'
+                  class="">
+                  onClickCallbacks
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#leafletmarkerlayers'
+                  class="">
+                  leafletMarkerLayers
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#leafletcontrollayer'
+                  class="">
+                  leafletControlLayer
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#constructor'
+                  class="">
+                  constructor
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#onmapmarkerclick'
+                  class="">
+                  onMapMarkerClick
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ontimelineitemclick'
+                  class="">
+                  onTimelineItemClick
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#pantotimelineitemifexists'
+                  class="">
+                  panToTimelineItemIfExists
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#pantotimelineitem'
+                  class="">
+                  panToTimelineItem
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#panmapandtimelinebyitemid'
+                  class="">
+                  panMapAndTimelineByItemId
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#populate'
+                  class="">
+                  populate
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#populatesingle'
+                  class="">
+                  populateSingle
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#populatewithcustommarker'
+                  class="">
+                  populateWithCustomMarker
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#populatewithcustommarkersingle'
+                  class="">
+                  populateWithCustomMarkerSingle
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#fit'
+                  class="">
+                  fit
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#fittimeline'
+                  class="">
+                  fitTimeline
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#fitmap'
+                  class="">
+                  fitMap
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#scrolltimelinetobottom'
+                  class="">
+                  scrollTimelineToBottom
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#clearmapandtimeline'
+                  class="">
+                  clearMapAndTimeline
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#clearmap'
+                  class="">
+                  clearMap
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#cleartimeline'
+                  class="">
+                  clearTimeline
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#doesmapmarkerexist'
+                  class="">
+                  doesMapMarkerExist
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#doestimelineitemexist'
+                  class="">
+                  doesTimelineItemExist
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#removeitembyid'
+                  class="">
+                  removeItemById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#removegroup'
+                  class="">
+                  removeGroup
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#destroy'
+                  class="">
+                  destroy
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#updateitem'
+                  class="">
+                  updateItem
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#tilelayers'
+                  class="">
+                  tileLayers
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#baselayers'
+                  class="">
+                  baseLayers
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='createdmarkerpropertiestype'>
+      CreatedMarkerPropertiesType
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>CreatedMarkerPropertiesType</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>id</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>longitude</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>latitude</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='createdtimelineitemtype'>
+      CreatedTimelineItemType
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>CreatedTimelineItemType</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>id</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+          
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>content</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+          : The text to be displayed in the Timeline item.
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>group</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+          : The group layer name.
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>start</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a>))</code>
+          : A valid date.
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>end</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a>)?)</code>
+          : A valid date. Required if 
+<code>type</code>
+ will be
+
+<code>range</code>
+. Otherwise, not required nor used for 
+<code>type</code>
+ of 
+<code>box</code>
+ or `point.
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>type</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>?)</code>
+          : The timeline item type to be displayed. See
+
+<a href="https://visjs.github.io/vis-timeline/docs/timeline/#items">https://visjs.github.io/vis-timeline/docs/timeline/#items</a>
+.
+
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='onclickcallbacks'>
+      onClickCallbacks
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>onClickCallbacks</div>
+  
+    <p>
+      Type:
+      {leafletMarker: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>, timelineItem: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>}
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='leafletmarkerlayers'>
+      leafletMarkerLayers
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Stores references to FeatureGroup layers that are used to manage and
+store markers into logical groups.</p>
+<p>Note that these FeatureGroup layers are used as the overlay layers in
+the Leaflet map.</p>
+
+    <div class='pre p1 fill-light mt0'>leafletMarkerLayers</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, L.FeatureGroup>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='leafletcontrollayer'>
+      leafletControlLayer
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>leafletControlLayer</div>
+  
+    <p>
+      Type:
+      L.Control.Layers
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='constructor'>
+      constructor
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>constructor(map: L.Map, timelineHtmlRef: <a href="https://developer.mozilla.org/docs/Web/HTML/Element">HTMLElement</a>, timelineOptions: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>map</span> <code class='quiet'>(L.Map)</code>
+	    An instance of a Leaflet map
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>timelineHtmlRef</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/HTML/Element">HTMLElement</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>timelineOptions</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?
+            = <code>{}</code>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='onmapmarkerclick'>
+      onMapMarkerClick
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Register a callback function on map marker click event.</p>
+
+    <div class='pre p1 fill-light mt0'>onMapMarkerClick(callback: function (x: <a href="https://developer.mozilla.org/docs/Web/API/MouseEvent">MouseEvent</a>): any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(function (x: <a href="https://developer.mozilla.org/docs/Web/API/MouseEvent">MouseEvent</a>): any)</code>
+	    Function that will be
+provided a click event object when some map marker is clicked.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ontimelineitemclick'>
+      onTimelineItemClick
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Register a callback function on timeline item click event.</p>
+
+    <div class='pre p1 fill-light mt0'>onTimelineItemClick(callback: function (x: <a href="https://developer.mozilla.org/docs/Web/API/MouseEvent">MouseEvent</a>): any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(function (x: <a href="https://developer.mozilla.org/docs/Web/API/MouseEvent">MouseEvent</a>): any)</code>
+	    Function that will be
+provided click event details of some timeline item.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='pantotimelineitemifexists'>
+      panToTimelineItemIfExists
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>panToTimelineItemIfExists(itemId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>itemId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='pantotimelineitem'>
+      panToTimelineItem
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>panToTimelineItem(itemId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>itemId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='panmapandtimelinebyitemid'>
+      panMapAndTimelineByItemId
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>A method intended to be used by api consumers to manually pan the map and
+the timeline to a common data item.</p>
+
+    <div class='pre p1 fill-light mt0'>panMapAndTimelineByItemId(id: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>))</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>id</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>))</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='populate'>
+      populate
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>populate(dataset: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>>, groupName: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, createMarkerProperties: function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#createdmarkerpropertiestype">CreatedMarkerPropertiesType</a>, createTimelineItem: function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#createdtimelineitemtype">CreatedTimelineItemType</a>, markerPopupRenderer: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>?): void</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataset</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>>)</code>
+	    A 1-d array of data objects used to create the
+markers and timeline items.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>groupName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    An identifier used to group and organize similar
+markers and Timeline items.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>createMarkerProperties</span> <code class='quiet'>(function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#createdmarkerpropertiestype">CreatedMarkerPropertiesType</a>)</code>
+	    A callback function that takes an object from 
+<code>dataset</code>
+ and returns
+another object of with the expected type.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>createTimelineItem</span> <code class='quiet'>(function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#createdtimelineitemtype">CreatedTimelineItemType</a>)</code>
+	    A callback function that takes an item of 
+<code>dataset</code>
+ and returns the
+expected object type.
+<p>  Note that it is the user's responsibility to provide values for <code>start</code>
+and <code>end</code> that comply with the <code>type</code> of Timeline item.</p>
+<p>  For example, <code>box</code> and <code>point</code> only require the <code>start</code> date whereas
+both the <code>start</code> and <code>end</code> properties are required for timeline items of
+type <code>range</code>.</p>
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>markerPopupRenderer</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>?)</code>
+	    A callback function that will be
+provided the current datum of 
+<code>dataset</code>
+ and is expected to return an
+html string.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>void</code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='populatesingle'>
+      populateSingle
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>populateSingle(datasetItem: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, groupName: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, createMarkerProperties: function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#createdmarkerpropertiestype">CreatedMarkerPropertiesType</a>, createTimelineItem: function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#createdtimelineitemtype">CreatedTimelineItemType</a>, markerPopupRenderer: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>?): void</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>datasetItem</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    The data object used to create the marker and the
+timeline item.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>groupName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    An identifier used to group and organize similar
+markers and Timeline items.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>createMarkerProperties</span> <code class='quiet'>(function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#createdmarkerpropertiestype">CreatedMarkerPropertiesType</a>)</code>
+	    A callback function that takes an object from 
+<code>dataset</code>
+ and returns
+another object of with the expected type.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>createTimelineItem</span> <code class='quiet'>(function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#createdtimelineitemtype">CreatedTimelineItemType</a>)</code>
+	    A callback function that takes an item of 
+<code>dataset</code>
+ and returns the
+expected object type.
+<p>  Note that it is the user's responsibility to provide values for <code>start</code>
+and <code>end</code> that comply with the <code>type</code> of Timeline item.</p>
+<p>  For example, <code>box</code> and <code>point</code> only require the <code>start</code> date whereas
+both the <code>start</code> and <code>end</code> properties are required for timeline items of
+type <code>range</code>.</p>
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>markerPopupRenderer</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>?)</code>
+	    A callback function that will be
+provided the current datum of 
+<code>dataset</code>
+ and is expected to return an
+html string.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>void</code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='populatewithcustommarker'>
+      populateWithCustomMarker
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>The user must handle the creation of the leaflet marker on their own. The
+intended use case is for users that want to use an external leaflet marker
+library or otherwise want to fully control how the marker is created.</p>
+
+    <div class='pre p1 fill-light mt0'>populateWithCustomMarker(dataset: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>>, groupName: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, createMarker: function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): L.marker, createTimelineItem: function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#createdtimelineitemtype">CreatedTimelineItemType</a>): void</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataset</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>>)</code>
+	    A 1-d array of data objects.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>groupName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    An identifier used to group and organize similar
+markers and Timeline items.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>createMarker</span> <code class='quiet'>(function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): L.marker)</code>
+	    A callback function
+that takes an object from 
+<code>dataset</code>
+ and returns a leaflet marker.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>createTimelineItem</span> <code class='quiet'>(function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#createdtimelineitemtype">CreatedTimelineItemType</a>)</code>
+	    A callback function that takes an item of 
+<code>dataset</code>
+ and returns the
+expected object type.
+<p>  Note that it is the user's responsibility to provide values for <code>start</code>
+and <code>end</code> that comply with the <code>type</code> of Timeline item.</p>
+<p>  For example, <code>box</code> and <code>point</code> only require the <code>start</code> date whereas
+both the <code>start</code> and <code>end</code> properties are required for timeline items of
+type <code>range</code>.</p>
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>void</code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='populatewithcustommarkersingle'>
+      populateWithCustomMarkerSingle
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>populateWithCustomMarkerSingle(data: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, groupName: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, createMarker: function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): L.marker, createTimelineItem: function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#createdtimelineitemtype">CreatedTimelineItemType</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>data</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>groupName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>createMarker</span> <code class='quiet'>(function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): L.marker)</code>
+	    A callback function
+that takes an object and returns a leaflet marker.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>createTimelineItem</span> <code class='quiet'>(function (x: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#createdtimelineitemtype">CreatedTimelineItemType</a>)</code>
+	    A callback function that takes an object and returns the expected type.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='fit'>
+      fit
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>fit()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='fittimeline'>
+      fitTimeline
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>fitTimeline()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='fitmap'>
+      fitMap
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Fits map viewport to show all markers from all layers.</p>
+
+    <div class='pre p1 fill-light mt0'>fitMap()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='scrolltimelinetobottom'>
+      scrollTimelineToBottom
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>scrollTimelineToBottom()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='clearmapandtimeline'>
+      clearMapAndTimeline
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>clearMapAndTimeline()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='clearmap'>
+      clearMap
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Clears all existing Leaflet LayerGroups including their markers as well as
+removing the LayerGroup from the Layer Control and the Leaflet Map
+instance.</p>
+
+    <div class='pre p1 fill-light mt0'>clearMap()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='cleartimeline'>
+      clearTimeline
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>clearTimeline()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='doesmapmarkerexist'>
+      doesMapMarkerExist
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Determines whether or not a marker exists within the grouping layers.</p>
+
+    <div class='pre p1 fill-light mt0'>doesMapMarkerExist(id: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>id</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='doestimelineitemexist'>
+      doesTimelineItemExist
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Determines whether or not an item exists in the Timeline.</p>
+
+    <div class='pre p1 fill-light mt0'>doesTimelineItemExist(id: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>id</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='removeitembyid'>
+      removeItemById
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>removeItemById(id: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>id</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='removegroup'>
+      removeGroup
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Removes an entire group at once.</p>
+
+    <div class='pre p1 fill-light mt0'>removeGroup(group: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>group</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='destroy'>
+      destroy
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Cleans up the Leaflet and Timeline instances as well as the associated
+event listeners.</p>
+
+    <div class='pre p1 fill-light mt0'>destroy()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='updateitem'>
+      updateItem
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>updateItem(item: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>item</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='tilelayers'>
+      tileLayers
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>tileLayers</div>
+  
+    <p>
+      Type:
+      {osm: {L.TileLayer}, cartodbLight: {L.TileLayer}, cartodbDark: {L.TileLayer}}
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='baselayers'>
+      baseLayers
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>baseLayers</div>
+  
+    <p>
+      Type:
+      {Light: L.TileLayer, Dark: L.TileLayer, Darker: L.TileLayer, Coloured: L.TileLayer}
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
