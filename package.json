@@ -14,7 +14,6 @@
     "test:watch": "tap --reporter=specy --watch",
     "doc": "rimraf docs/* & npm run doc:html",
     "doc:html": "documentation build ./src/index.js -f html -o docs",
-    "prepublishOnly": "npm run build",
     "preversion": "npm run build",
     "version": "npm run doc && git add -A docs && git add -A dist",
     "postversion": "git push && git push --tags"
