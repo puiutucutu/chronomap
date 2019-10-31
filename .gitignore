@@ -1,0 +1,8 @@
+.DS_Store
+.env.local
+.idea
+.nyc_output
+coverage
+development/dist
+package-lock.json
+node_modules

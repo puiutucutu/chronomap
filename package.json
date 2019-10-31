@@ -1,0 +1,60 @@
+{
+  "name": "chronomap",
+  "version": "0.1.0",
+  "description": "provides functionality for syncing and interacting with a leaflet map and a vis-timeline",
+  "main": "dist/chronomap.cjs.js",
+  "module": "dist/chronomap.esm.js",
+  "browser": "dist/chronomap.umd.js",
+  "scripts": {
+    "build": "cross-env BABEL_ENV=build NODE_ENV=production rollup -c rollup.config.js",
+    "start": "cross-env BABEL_ENV=build rollup -w -c rollup.config.dev.js",
+    "coverage": "npm run test && tap --coverage-report=lcov",
+    "test": "tap --reporter=classic",
+    "test:riteway": "riteway -r esm ./test/**/*.test.js",
+    "test:watch": "tap --reporter=specy --watch",
+    "doc": "rimraf docs/* & npm run doc:html",
+    "doc:html": "documentation build ./src/index.js -f html -o docs",
+    "prepublishOnly": "npm run test && npm run build",
+    "preversion": "npm run test && npm run build",
+    "version": "npm run doc && git add -A docs && git add -A dist",
+    "postversion": "git push && git push --tags"
+  },
+  "files": [
+    "/dist",
+    "/src"
+  ],
+  "peerDependencies": {
+    "leaflet": "^1.5.1",
+    "vis-timeline": "^6.1.0"
+  },
+  "dependencies": {
+    "leaflet": "^1.5.1",
+    "vis-timeline": "^6.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/register": "^7.6.2",
+    "core-js": "^3.3.3",
+    "cross-env": "^6.0.0",
+    "documentation": "^12.1.2",
+    "esm": "^3.2.25",
+    "rimraf": "^3.0.0",
+    "riteway": "^6.1.0",
+    "rollup": "^1.10.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-terser": "^5.1.2",
+    "tap": "^14.6.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/puiutucutu/chronomap.git"
+  },
+  "author": "puiutucutu",
+  "license": "GNU"
+}

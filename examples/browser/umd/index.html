@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chronomap - Browser UMD Example</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css"
+      integrity="sha256-XiJ+PedljEmPP2VaQzSzekfCZdPr0fpqmh9dY6kpsuQ="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+      crossorigin=""
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/vis-timeline@6.1.0/dist/vis-timeline-graph2d.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        background-color: #e6e6e6;
+        font-family: "Arial", sans-serif;
+      }
+
+      .application-container {
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
+        height: 100vh;
+        background-color: #f8f8f8;
+      }
+
+      .chronomap {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        flex: 0 1 100%;
+      }
+
+      .chronomap__map {
+        flex: 1 0 auto;
+      }
+
+      .chronomap__timeline {
+        flex: 0 0 auto;
+        font-size: 12px;
+        background-color: white;
+        box-shadow: inset 0 6px 8px 0 rgba(0, 0, 0, 0.1);
+      }
+
+      .dashboard {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        flex: 1 0 400px;
+        padding: 1rem;
+        overflow-y: scroll;
+        background-color: #f2f6f9;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="application-container">
+      <main class="chronomap">
+        <div class="chronomap__map"></div>
+        <div class="chronomap__timeline"></div>
+      </main>
+      <aside class="dashboard">
+        <div class="h100 db pa2 pb1 br2 bg-white shadow-1">
+          <span class="f3 db mb2">Dashboard</span>
+          <span
+            class="f6 link pointer dim br2 ph3 pv2 mr1 mb1 dib b white bg-dark-blue"
+            name="panToNewYorkBtn"
+          >
+            New York City
+          </span>
+          <span
+            class="f6 link pointer dim br2 ph3 pv2 mr1 mb1 dib b white bg-green"
+            name="panToBostonBtn"
+          >
+            Boston
+          </span>
+          <span
+            class="f6 link pointer dim br2 ph3 pv2 mr1 mb1 dib b white bg-red"
+            name="panToTorontoBtn"
+          >
+            Toronto
+          </span>
+        </div>
+      </aside>
+    </section>
+  </body>
+
+  <script src="../../../dist/chronomap.umd.js"></script>
+  <script type="application/javascript">
+    window.onload = function() {
+      function createMapInstance(renderTarget) {
+        const options = {
+          center: L.latLng(38.1, -82.25),
+          zoom: 14,
+          preferCanvas: true,
+          renderer: L.canvas()
+        };
+
+        const map = new L.map(renderTarget, options);
+        const editableLayers = L.featureGroup().addTo(map);
+        map.addLayer(editableLayers);
+
+        return map;
+      }
+
+      const sampleDatasetOne = [
+        {
+          id: 1,
+          name: "New York City",
+          state: "New York",
+          fromDate: "2019-04-01 00:00",
+          toDate: "2019-05-01 23:59",
+          latitude: 40.7128,
+          longitude: -74.006
+        },
+        {
+          id: 2,
+          name: "Boston",
+          state: "Massachusetts",
+          fromDate: "2019-09-01 00:00",
+          toDate: "2019-10-01 23:59",
+          latitude: 42.3601,
+          longitude: -71.0589
+        }
+      ];
+      const sampleDatasetTwo = [
+        {
+          id: 3,
+          name: "Toronto",
+          state: "Ontario",
+          fromDate: "2019-06-01 00:00",
+          toDate: null,
+          latitude: 43.6532,
+          longitude: -79.3832
+        }
+      ];
+
+      const canadaGroupName = "Canada";
+      const usaGroupName = "USA";
+
+      /**
+       * @param {Object} itemData
+       * @return {CreatedMarkerPropertiesType}
+       */
+      const createMarkerPropertiesCallback = itemData => ({
+        id: itemData.id,
+        longitude: itemData.longitude,
+        latitude: itemData.latitude
+      });
+
+      /**
+       * @param {Object} itemData
+       * @return {CreatedTimelineItemType}
+       */
+      const createTimelineItemCallback = itemData => ({
+        id: itemData.id,
+        content: itemData.name,
+        group: canadaGroupName,
+        start: itemData.fromDate,
+        end: itemData.toDate,
+        type: "range"
+      });
+
+      /**
+       * @param {Object} itemData
+       * @return {string}
+       */
+      const markerPopupRendererCallback = itemData => {
+        return `<p><b>${itemData.name}</b> (${itemData.state})</p>`;
+      };
+
+      const htmlRefs = {
+        leaflet: document.getElementsByClassName("chronomap__map")[0],
+        timeline: document.getElementsByClassName("chronomap__timeline")[0]
+      };
+
+      const timelineOptions = {
+        minHeight: 200,
+        maxHeight: 400,
+        verticalScroll: true,
+        stack: true
+      };
+
+      const mapInstance = createMapInstance(htmlRefs.leaflet);
+      const chronomap = new chronoMap.Chronomap(
+        mapInstance,
+        htmlRefs.timeline,
+        timelineOptions
+      );
+
+      chronomap.init();
+
+      chronomap.populate(
+        sampleDatasetOne,
+        canadaGroupName,
+        createMarkerPropertiesCallback,
+        createTimelineItemCallback,
+        markerPopupRendererCallback
+      );
+
+      chronomap.populateWithCustomMarker(
+        sampleDatasetTwo,
+        usaGroupName,
+        function(itemData) {
+          const markerOptions = {
+            id: itemData.id
+          };
+
+          const marker = new L.marker(
+            [itemData.latitude, itemData.longitude],
+            markerOptions
+          ).on("click", e => console.log(`Clicked marker of ${itemData.name}`));
+
+          marker.bindPopup(markerPopupRendererCallback(itemData));
+
+          return marker;
+        },
+        function(itemData) {
+          return {
+            id: itemData.id,
+            content: itemData.name,
+            group: usaGroupName,
+            start: itemData.fromDate,
+            type: "point"
+          };
+        }
+      );
+
+      document
+        .getElementsByName("panToNewYorkBtn")[0]
+        .addEventListener("click", function(event) {
+          chronomap.panMapAndTimelineByItemId(1);
+        });
+
+      document
+        .getElementsByName("panToBostonBtn")[0]
+        .addEventListener("click", function(event) {
+          chronomap.panMapAndTimelineByItemId(2);
+        });
+
+      document
+        .getElementsByName("panToTorontoBtn")[0]
+        .addEventListener("click", function(event) {
+          chronomap.panMapAndTimelineByItemId(3);
+        });
+
+      window.chronomap = chronomap;
+    };
+  </script>
+</html>
