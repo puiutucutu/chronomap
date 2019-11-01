@@ -3,6 +3,7 @@
 .idea
 .nyc_output
 coverage
+dist
 development/dist
 package-lock.json
 node_modules
