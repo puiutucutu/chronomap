@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Chronomap - Node Example</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css"
+      integrity="sha256-XiJ+PedljEmPP2VaQzSzekfCZdPr0fpqmh9dY6kpsuQ="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css"
+      integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM="
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vis-timeline@6.1.0/dist/vis-timeline-graph2d.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        background-color: #e6e6e6;
+        font-family: "Arial", sans-serif;
+      }
+
+      .application-container {
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
+        height: 100vh;
+        background-color: #f8f8f8;
+      }
+
+      .chronomap {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        flex: 0 1 100%;
+      }
+
+      .chronomap__map {
+        flex: 1 0 auto;
+      }
+
+      .chronomap__timeline {
+        flex: 0 0 auto;
+        font-size: 12px;
+        background-color: white;
+        box-shadow: inset 0 6px 8px 0 rgba(0, 0, 0, 0.1);
+      }
+
+      .dashboard {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        flex: 1 0 400px;
+        padding: 1rem;
+        overflow-y: scroll;
+        background-color: #f2f6f9;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="application-container">
+      <main class="chronomap">
+        <div class="chronomap__map"></div>
+        <div class="chronomap__timeline"></div>
+      </main>
+      <aside class="dashboard">
+        <div class="h100 db pa2 pb1 br2 bg-white shadow-1">
+          <span class="f3 db mb2">Dashboard</span>
+          <span
+            class="f6 link pointer dim br2 ph3 pv2 mr1 mb1 dib b white bg-dark-blue"
+            name="panToNewYorkBtn"
+          >
+            New York City
+          </span>
+          <span
+            class="f6 link pointer dim br2 ph3 pv2 mr1 mb1 dib b white bg-green"
+            name="panToBostonBtn"
+          >
+            Boston
+          </span>
+          <span
+            class="f6 link pointer dim br2 ph3 pv2 mr1 mb1 dib b white bg-red"
+            name="panToTorontoBtn"
+          >
+            Toronto
+          </span>
+        </div>
+      </aside>
+    </section>
+    <script src="./index.js"></script>
+  </body>
+</html>
