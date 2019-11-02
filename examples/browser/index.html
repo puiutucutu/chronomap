@@ -5,25 +5,18 @@
     <title>Chronomap - Browser UMD Example</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css"
-      integrity="sha256-XiJ+PedljEmPP2VaQzSzekfCZdPr0fpqmh9dY6kpsuQ="
-      crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/npm/tachyons@4.11.1/css/tachyons.min.css"
     />
     <link
       rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-      crossorigin=""
+      href="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.css"
     />
-    <script
-      src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-      crossorigin=""
-    ></script>
     <link
       rel="stylesheet"
-      href="https://unpkg.com/vis-timeline@6.1.0/dist/vis-timeline-graph2d.min.css"
+      href="https://cdn.jsdelivr.net/npm/vis-timeline@6.1.0/dist/vis-timeline-graph2d.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vis-timeline@6.1.0/dist/vis-timeline-graph2d.min.js"></script>
     <style>
       body {
         margin: 0;
@@ -100,7 +93,7 @@
     </section>
   </body>
 
-  <script src="../../../dist/chronomap.umd.js"></script>
+  <script src="../../dist/chronomap.umd.js"></script>
   <script type="application/javascript">
     window.onload = function() {
       function createMapInstance(renderTarget) {
