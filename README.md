@@ -15,7 +15,7 @@ Provides functionality for syncing and interacting with a `leaflet` map and a `v
 * pan to timeline item on marker click
 * pan map to marker on timeline item click
 * hooks for manually panning timeline and map to marker
-* does not bundle `leaflet` or `vis-timeline` dependencies making for a light build
+* does not bundle `leaflet` or `vis-timeline` dependencies making for a light build (only 36 kb)
 
 ## Use
 
