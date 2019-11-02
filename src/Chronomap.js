@@ -1,6 +1,3 @@
-import L from "leaflet";
-import * as vis from "vis-timeline";
-
 /**
  * @typedef {Object} CreatedMarkerPropertiesType
  * @property {string} id

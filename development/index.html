@@ -82,13 +82,14 @@
     </section>
   </body>
 
+  <script src="./node_modules/leaflet/dist/leaflet.js"></script>
+  <script src="./node_modules/vis-timeline/dist/vis-timeline-graph2d.min.js"></script>
   <script type="module">
-    import vis from "./node_modules/vis-timeline/dist/vis-timeline-graph2d.esm.js";
     import { Chronomap } from "./dist/chronomap.esm.js";
 
     function createMapInstance(renderTarget) {
       const options = {
-        center: L.latLng(41.39, -78.10),
+        center: L.latLng(41.39, -78.1),
         zoom: 14,
         preferCanvas: true,
         renderer: L.canvas()
@@ -109,7 +110,7 @@
         fromDate: "2019-04-01 00:00",
         toDate: "2019-05-01 23:59",
         latitude: 40.7128,
-        longitude: -74.0060
+        longitude: -74.006
       },
       {
         id: 2,
@@ -180,7 +181,11 @@
     };
 
     const mapInstance = createMapInstance(htmlRefs.leaflet);
-    const chronomap = new Chronomap(mapInstance, htmlRefs.timeline, timelineOptions);
+    const chronomap = new Chronomap(
+      mapInstance,
+      htmlRefs.timeline,
+      timelineOptions
+    );
     chronomap.init();
 
     chronomap.populate(

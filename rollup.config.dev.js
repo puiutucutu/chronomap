@@ -27,5 +27,20 @@ module.exports = [
         contentBase: ["development"]
       })
     ]
+  },
+  {
+    external,
+    input: "src/index.js",
+    output: {
+      file: `development/${pkg.browser}`,
+      format: "umd",
+      name: "chronoMap",
+      sourcemap: true,
+      globals: {
+        leaflet: "L",
+        "vis-timeline": "vis"
+      }
+    },
+    plugins: [...babelPlugin, resolve(), commonjs()]
   }
 ];
