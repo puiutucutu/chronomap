@@ -51,5 +51,5 @@ Outputs a bundled build in the `./development/dist` folder and serves the `
 ## Todo
 
 - [ ] add tests 
-- [ ] reduce bundle size by making `leaflet` and `vis-timeline` external requirements
+- [x] reduce bundle size by making `leaflet` and `vis-timeline` external requirements
 - [ ] extract functionality to interop with other mapping libraries
