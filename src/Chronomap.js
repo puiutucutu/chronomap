@@ -1,5 +1,5 @@
 import L from "leaflet";
-import { DataSet, Timeline } from "vis-timeline";
+import * as vis from "vis-timeline";
 
 /**
  * @typedef {Object} CreatedMarkerPropertiesType
@@ -33,9 +33,9 @@ class Chronomap {
   /* @type {Timeline} */
   timeline;
   /* @type {DataSet} */
-  timelineGroups = new DataSet();
+  timelineGroups = new vis.DataSet();
   /* @type {DataSet} */
-  timelineItems = new DataSet();
+  timelineItems = new vis.DataSet();
 
   /**
    * @type {{ leafletMarker: Function, timelineItem: Function }}
@@ -113,7 +113,7 @@ class Chronomap {
    * @private
    */
   makeTimeline() {
-    this.timeline = new Timeline(this.timelineHtmlRef, [], this.timelineOptions) // prettier-ignore
+    this.timeline = new vis.Timeline(this.timelineHtmlRef, [], this.timelineOptions) // prettier-ignore
     this.timeline.setGroups(this.timelineGroups);
     this.timeline.setItems(this.timelineItems);
     this.timeline.fit();
