@@ -11,7 +11,7 @@
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
-    "chronomap": "^0.2.3",
+    "chronomap": "^0.2.4",
     "esm": "^3.2.25",
     "leaflet": "^1.5.1",
     "vis-timeline": "^6.1.0"
