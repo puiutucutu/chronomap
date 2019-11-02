@@ -10,25 +10,31 @@ const babelPlugin = [
   })
 ];
 
+const external = ["leaflet", "vis-timeline"];
+
 module.exports = [
   {
+    external,
     input: "src/index.js",
     output: [
       { file: pkg.main, format: "cjs", sourcemap: true },
       { file: pkg.module, format: "esm", sourcemap: true }
     ],
-    plugins: [...babelPlugin, resolve(), commonjs(), terser()]
-    // external: ["leaflet", "vis-timeline"]
+    plugins: [...babelPlugin, resolve(), commonjs()]
   },
   {
+    external,
     input: "src/index.js",
     output: {
       file: pkg.browser,
       format: "umd",
       name: "chronoMap",
-      sourcemap: true
+      sourcemap: true,
+      globals: {
+        "leaflet": "L",
+        "vis-timeline": "vis"
+      }
     },
     plugins: [...babelPlugin, resolve(), commonjs(), terser()]
-    // external: ["leaflet", "vis-timeline"]
   }
 ];

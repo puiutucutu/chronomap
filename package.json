@@ -26,10 +26,6 @@
     "leaflet": "^1.5.1",
     "vis-timeline": "^6.1.0"
   },
-  "dependencies": {
-    "leaflet": "^1.5.1",
-    "vis-timeline": "^6.1.0"
-  },
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/node": "^7.6.2",
