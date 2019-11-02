@@ -10,11 +10,9 @@ const babelPlugin = [
   })
 ];
 
-const external = ["leaflet", "vis-timeline"];
-
 module.exports = [
   {
-    external,
+    external: ["leaflet"],
     input: "src/index.js",
     output: [
       { file: pkg.main, format: "cjs", sourcemap: true },
@@ -23,7 +21,7 @@ module.exports = [
     plugins: [...babelPlugin, resolve(), commonjs()]
   },
   {
-    external,
+    external: ["leaflet", "vis-timeline"],
     input: "src/index.js",
     output: {
       file: pkg.browser,
