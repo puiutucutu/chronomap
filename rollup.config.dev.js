@@ -10,8 +10,11 @@ const babelPlugin = [
   })
 ];
 
+const external = ["leaflet", "vis-timeline"];
+
 module.exports = [
   {
+    external,
     input: "src/index.js",
     output: [
       { file: `development/${pkg.module}`, format: "esm", sourcemap: true }
