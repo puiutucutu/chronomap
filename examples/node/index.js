@@ -1,9 +1,5 @@
 import L from "leaflet";
-// import vis from "vis-timeline/dist/vis-timeline-graph2d.min";
-// import vis from "vis-timeline/dist/vis-timeline-graph2d.esm.js";
-// import vis from "vis-timeline";
 import { Chronomap } from "chronomap";
-import "vis-timeline/dist/vis-timeline-graph2d.min.css";
 
 const htmlRefs = {
   leaflet: document.getElementsByClassName("chronomap__map")[0],
