@@ -2,6 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var visTimeline = require('vis-timeline');
+
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function createCommonjsModule(fn, module) {
@@ -2275,6 +2277,7 @@ function _nonIterableRest() {
  * @property {string} [type] - The timeline item type to be displayed. See
  *   https://visjs.github.io/vis-timeline/docs/timeline/#items.
  */
+
 var noop = function noop() {};
 
 var Chronomap =
@@ -2329,8 +2332,8 @@ function () {
     this.timelineHtmlRef = void 0;
     this.timelineOptions = {};
     this.timeline = void 0;
-    this.timelineGroups = new vis.DataSet();
-    this.timelineItems = new vis.DataSet();
+    this.timelineGroups = new visTimeline.DataSet();
+    this.timelineItems = new visTimeline.DataSet();
     this.onClickCallbacks = {
       leafletMarker: noop,
       timelineItem: noop
@@ -2367,7 +2370,7 @@ function () {
   }, {
     key: "makeTimeline",
     value: function makeTimeline() {
-      this.timeline = new vis.Timeline(this.timelineHtmlRef, [], this.timelineOptions); // prettier-ignore
+      this.timeline = new visTimeline.Timeline(this.timelineHtmlRef, [], this.timelineOptions); // prettier-ignore
 
       this.timeline.setGroups(this.timelineGroups);
       this.timeline.setItems(this.timelineItems);
