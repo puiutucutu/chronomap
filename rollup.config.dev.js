@@ -10,8 +10,6 @@ const babelPlugin = [
   })
 ];
 
-const external = ["leaflet", "vis-timeline"];
-
 module.exports = [
   {
     external: ["leaflet"],
