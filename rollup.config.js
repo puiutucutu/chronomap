@@ -29,7 +29,8 @@ module.exports = [
       name: "chronoMap",
       sourcemap: true,
       globals: {
-        "leaflet": "L"
+        "leaflet": "L",
+        "vis-timeline": "vis"
       }
     },
     plugins: [...babelPlugin, resolve(), commonjs(), terser()]

@@ -14,7 +14,7 @@ const external = ["leaflet", "vis-timeline"];
 
 module.exports = [
   {
-    external,
+    external: ["leaflet"],
     input: "src/index.js",
     output: [
       { file: `development/${pkg.module}`, format: "esm", sourcemap: true }
@@ -29,7 +29,7 @@ module.exports = [
     ]
   },
   {
-    external,
+    external: ["leaflet", "vis-timeline"],
     input: "src/index.js",
     output: {
       file: `development/${pkg.browser}`,
@@ -37,7 +37,8 @@ module.exports = [
       name: "chronoMap",
       sourcemap: true,
       globals: {
-        leaflet: "L"
+        "leaflet": "L",
+        "vis-timeline": "vis"
       }
     },
     plugins: [...babelPlugin, resolve(), commonjs()]
