@@ -84,9 +84,8 @@
 
   <script src="./node_modules/leaflet/dist/leaflet.js"></script>
   <script src="./node_modules/vis-timeline/dist/vis-timeline-graph2d.min.js"></script>
-  <script type="module">
-    import { Chronomap } from "./dist/chronomap.esm.js";
-
+  <script src="./dist/chronomap.umd.js"></script>
+  <script type="application/javascript">
     function createMapInstance(renderTarget) {
       const options = {
         center: L.latLng(41.39, -78.1),
@@ -181,7 +180,7 @@
     };
 
     const mapInstance = createMapInstance(htmlRefs.leaflet);
-    const chronomap = new Chronomap(
+    const chronomap = new chronoMap.Chronomap(
       mapInstance,
       htmlRefs.timeline,
       timelineOptions
