@@ -12,7 +12,7 @@ const babelPlugin = [
 
 module.exports = [
   {
-    external: ["leaflet"],
+    external: ["leaflet", "vis-timeline"],
     input: "src/index.js",
     output: [
       { file: pkg.main, format: "cjs", sourcemap: true },
