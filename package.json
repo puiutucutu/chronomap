@@ -1,6 +1,6 @@
 {
   "name": "chronomap",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "provides functionality for syncing and interacting with a leaflet map and a vis-timeline",
   "main": "dist/chronomap.cjs.js",
   "module": "dist/chronomap.esm.js",
