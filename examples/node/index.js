@@ -86,6 +86,10 @@ const mapInstance = L.map(htmlRefs.leaflet, {
   preferCanvas: true,
   renderer: L.canvas()
 });
+
+const tileLayer = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { id: "osm" });
+mapInstance.addLayer(tileLayer);
+
 const chronomap = new Chronomap(
   mapInstance,
   htmlRefs.timeline,
