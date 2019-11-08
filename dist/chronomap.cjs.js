@@ -200,7 +200,7 @@ var shared = createCommonjsModule(function (module) {
 (module.exports = function (key, value) {
   return sharedStore[key] || (sharedStore[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.3.5',
+  version: '3.3.6',
   mode:  'global',
   copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
@@ -1341,8 +1341,11 @@ if (v8) {
   match = v8.split('.');
   version = match[0] + match[1];
 } else if (userAgent) {
-  match = userAgent.match(/Chrome\/(\d+)/);
-  if (match) version = match[1];
+  match = userAgent.match(/Edge\/(\d+)/);
+  if (!match || match[1] >= 74) {
+    match = userAgent.match(/Chrome\/(\d+)/);
+    if (match) version = match[1];
+  }
 }
 
 var v8Version = version && +version;
@@ -1906,40 +1909,6 @@ if (objectToString !== ObjectPrototype$2.toString) {
   redefine(ObjectPrototype$2, 'toString', objectToString, { unsafe: true });
 }
 
-// `RegExp.prototype.flags` getter implementation
-// https://tc39.github.io/ecma262/#sec-get-regexp.prototype.flags
-var regexpFlags = function () {
-  var that = anObject(this);
-  var result = '';
-  if (that.global) result += 'g';
-  if (that.ignoreCase) result += 'i';
-  if (that.multiline) result += 'm';
-  if (that.dotAll) result += 's';
-  if (that.unicode) result += 'u';
-  if (that.sticky) result += 'y';
-  return result;
-};
-
-var TO_STRING = 'toString';
-var RegExpPrototype = RegExp.prototype;
-var nativeToString = RegExpPrototype[TO_STRING];
-
-var NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', flags: 'b' }) != '/a/b'; });
-// FF44- RegExp#toString has a wrong name
-var INCORRECT_NAME = nativeToString.name != TO_STRING;
-
-// `RegExp.prototype.toString` method
-// https://tc39.github.io/ecma262/#sec-regexp.prototype.tostring
-if (NOT_GENERIC || INCORRECT_NAME) {
-  redefine(RegExp.prototype, TO_STRING, function toString() {
-    var R = anObject(this);
-    var p = String(R.source);
-    var rf = R.flags;
-    var f = String(rf === undefined && R instanceof RegExp && !('flags' in RegExpPrototype) ? regexpFlags.call(R) : rf);
-    return '/' + p + '/' + f;
-  }, { unsafe: true });
-}
-
 var MATCH = wellKnownSymbol('match');
 
 // `IsRegExp` abstract operation
@@ -2307,15 +2276,11 @@ function () {
    */
 
   /**
-   * @type {L.Control.Layers}
+   * @type {L.Control}
    */
 
   /**
-   * @type {{ osm: {L.TileLayer}, cartodbLight: {L.TileLayer}, cartodbDark: {L.TileLayer} }}
-   */
-
-  /**
-   * @type {{ Light: L.TileLayer, Dark: L.TileLayer, Darker: L.TileLayer, Coloured: L.TileLayer }}
+   * @type {boolean}
    */
 
   /**
@@ -2340,6 +2305,7 @@ function () {
     };
     this.leafletMarkerLayers = new Map();
     this.leafletControlLayer = void 0;
+    this.hasControlLayerBeenAddedToMap = false;
     this.map = map;
     this.timelineHtmlRef = timelineHtmlRef;
     this.timelineOptions = timelineOptions;
@@ -2348,20 +2314,7 @@ function () {
   _createClass(Chronomap, [{
     key: "init",
     value: function init() {
-      this.prepareMap();
       this.makeTimeline();
-    }
-    /**
-     * @private
-     */
-
-  }, {
-    key: "prepareMap",
-    value: function prepareMap() {
-      this.leafletControlLayer = L.control.layers(Chronomap.baseLayers, {}, {
-        collapsed: false
-      }).addTo(this.map);
-      this.map.addLayer(Chronomap.baseLayers.Coloured); // set default base layer
     }
     /**
      * @private
@@ -2375,6 +2328,21 @@ function () {
       this.timeline.setGroups(this.timelineGroups);
       this.timeline.setItems(this.timelineItems);
       this.timeline.fit();
+    }
+    /**
+     * Creates a leaflet control (if it does not exist) for handling the toggling
+     * of marker and timeline item groups.
+     */
+
+  }, {
+    key: "addLayerControlOnce",
+    value: function addLayerControlOnce() {
+      if (!this.hasControlLayerBeenAddedToMap) {
+        this.hasControlLayerBeenAddedToMap = true;
+        this.leafletControlLayer = L.control.layers(null, null, {
+          collapsed: false
+        }).addTo(this.map);
+      }
     }
     /**
      * Register a callback function on map marker click event.
@@ -2690,8 +2658,8 @@ function () {
     }
     /**
      * @public
-     * @param {Object} datasetItem The data object used to create the marker and the
-     *   timeline item.
+     * @param {Object} datasetItem The data object used to create the marker and
+     *   the timeline item.
      *
      * @param {string} groupName An identifier used to group and organize similar
      *   markers and Timeline items.
@@ -2843,6 +2811,7 @@ function () {
         throw new Error("Map layer `".concat(name, "` already exists"));
       }
 
+      this.addLayerControlOnce();
       this.leafletMarkerLayers.set(name, new L.FeatureGroup());
       var layer = this.leafletMarkerLayers.get(name);
       this.leafletControlLayer.addOverlay(layer, name);
@@ -3387,31 +3356,6 @@ function () {
 
   return Chronomap;
 }();
-
-Chronomap.tileLayers = {
-  osm: L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    id: "osm"
-  }),
-  // prettier-ignore
-  cartodbLightAll: L.tileLayer("http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
-    id: "cartodbLightAll"
-  }),
-  // prettier-ignore
-  stamenToner: L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png", {
-    id: "stamenToner"
-  }),
-  // prettier-ignore
-  stamenTonerLite: L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png", {
-    id: "stamenTonerLite"
-  }) // prettier-ignore
-
-};
-Chronomap.baseLayers = {
-  Coloured: Chronomap.tileLayers.osm,
-  Light: Chronomap.tileLayers.cartodbLightAll,
-  Dark: Chronomap.tileLayers.stamenTonerLite,
-  Darker: Chronomap.tileLayers.stamenToner
-};
 
 exports.Chronomap = Chronomap;
 //# sourceMappingURL=chronomap.cjs.js.map

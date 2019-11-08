@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8'>
-  <title>chronomap 0.3.0 | Documentation</title>
+  <title>chronomap 1.0.0 | Documentation</title>
   <meta name='description' content='provides functionality for syncing and interacting with a leaflet map and a vis-timeline'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>chronomap</h3>
-          <div class='mb1'><code>0.3.0</code></div>
+          <div class='mb1'><code>1.0.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -76,9 +76,29 @@
               
                 
                 <li><a
+                  href='#hascontrollayerbeenaddedtomap'
+                  class="">
+                  hasControlLayerBeenAddedToMap
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#constructor'
                   class="">
                   constructor
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addlayercontrolonce'
+                  class="">
+                  addLayerControlOnce
                   
                 </a>
                 
@@ -299,26 +319,6 @@
                   href='#updateitem'
                   class="">
                   updateItem
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#tilelayers'
-                  class="">
-                  tileLayers
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#baselayers'
-                  class="">
-                  baseLayers
                   
                 </a>
                 
@@ -645,7 +645,59 @@ the Leaflet map.</p>
   
     <p>
       Type:
-      L.Control.Layers
+      L.Control
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hascontrollayerbeenaddedtomap'>
+      hasControlLayerBeenAddedToMap
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>hasControlLayerBeenAddedToMap</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>
     </p>
   
   
@@ -735,6 +787,55 @@ the Leaflet map.</p>
         </div>
       
     </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addlayercontrolonce'>
+      addLayerControlOnce
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Creates a leaflet control (if it does not exist) for handling the toggling
+of marker and timeline item groups.</p>
+
+    <div class='pre p1 fill-light mt0'>addLayerControlOnce()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
   
 
   
@@ -1219,8 +1320,8 @@ html string.
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>datasetItem</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    The data object used to create the marker and the
-timeline item.
+	    The data object used to create the marker and
+the timeline item.
 
           </div>
           
@@ -2186,110 +2287,6 @@ event listeners.</p>
         </div>
       
     </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='tilelayers'>
-      tileLayers
-    </h3>
-    
-    
-  </div>
-  
-
-  
-    <div class='pre p1 fill-light mt0'>tileLayers</div>
-  
-    <p>
-      Type:
-      {osm: {L.TileLayer}, cartodbLight: {L.TileLayer}, cartodbDark: {L.TileLayer}}
-    </p>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='baselayers'>
-      baseLayers
-    </h3>
-    
-    
-  </div>
-  
-
-  
-    <div class='pre p1 fill-light mt0'>baseLayers</div>
-  
-    <p>
-      Type:
-      {Light: L.TileLayer, Dark: L.TileLayer, Darker: L.TileLayer, Coloured: L.TileLayer}
-    </p>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
   
 
   
