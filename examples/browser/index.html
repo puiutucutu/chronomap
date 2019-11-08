@@ -89,15 +89,15 @@
     window.onload = function() {
       function createMapInstance(renderTarget) {
         const options = {
-          center: L.latLng(38.1, -82.25),
+          center: L.latLng(41.39, -78.1),
           zoom: 14,
           preferCanvas: true,
           renderer: L.canvas()
         };
 
         const map = new L.map(renderTarget, options);
-        const editableLayers = L.featureGroup().addTo(map);
-        map.addLayer(editableLayers);
+        const tileLayer = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { id: "osm" });
+        map.addLayer(tileLayer);
 
         return map;
       }

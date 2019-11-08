@@ -20,9 +20,6 @@ import { DataSet, Timeline } from "vis-timeline";
  */
 
 const noop = () => {};
-const getPrototype = x => Object.prototype.toString.call(x);
-const isObject = x => getPrototype(x) === "[object Object]";
-const isFunction = x => getPrototype(x) === "[object Function]";
 
 class Chronomap {
   /* @type {L.Map} */
@@ -57,29 +54,14 @@ class Chronomap {
   leafletMarkerLayers = new Map();
 
   /**
-   * @type {L.Control.Layers}
+   * @type {L.Control}
    */
   leafletControlLayer;
 
   /**
-   * @type {{ osm: {L.TileLayer}, cartodbLight: {L.TileLayer}, cartodbDark: {L.TileLayer} }}
+   * @type {boolean}
    */
-  static tileLayers = {
-    osm: L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { id: "osm" }), // prettier-ignore
-    cartodbLightAll: L.tileLayer("http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", { id: "cartodbLightAll" }), // prettier-ignore
-    stamenToner: L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png", { id: "stamenToner" }), // prettier-ignore
-    stamenTonerLite: L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png", { id: "stamenTonerLite" }) // prettier-ignore
-  };
-
-  /**
-   * @type {{ Light: L.TileLayer, Dark: L.TileLayer, Darker: L.TileLayer, Coloured: L.TileLayer }}
-   */
-  static baseLayers = {
-    Coloured: Chronomap.tileLayers.osm,
-    Light: Chronomap.tileLayers.cartodbLightAll,
-    Dark: Chronomap.tileLayers.stamenTonerLite,
-    Darker: Chronomap.tileLayers.stamenToner
-  };
+  hasControlLayerBeenAddedToMap = false;
 
   /**
    * @param {L.Map} map An instance of a Leaflet map
@@ -93,19 +75,7 @@ class Chronomap {
   }
 
   init() {
-    this.prepareMap();
     this.makeTimeline();
-  }
-
-  /**
-   * @private
-   */
-  prepareMap() {
-    this.leafletControlLayer = L.control
-    .layers(Chronomap.baseLayers, {}, { collapsed: false })
-    .addTo(this.map);
-
-    this.map.addLayer(Chronomap.baseLayers.Coloured); // set default base layer
   }
 
   /**
@@ -116,6 +86,20 @@ class Chronomap {
     this.timeline.setGroups(this.timelineGroups);
     this.timeline.setItems(this.timelineItems);
     this.timeline.fit();
+  }
+
+  /**
+   * Creates a leaflet control (if it does not exist) for handling the toggling
+   * of marker and timeline item groups.
+   */
+  addLayerControlOnce() {
+    if (!this.hasControlLayerBeenAddedToMap) {
+      this.hasControlLayerBeenAddedToMap = true;
+      this.leafletControlLayer = L.control
+        .layers(null, null, { collapsed: false })
+        .addTo(this.map)
+      ;
+    }
   }
 
   /**
@@ -334,8 +318,8 @@ class Chronomap {
 
   /**
    * @public
-   * @param {Object} datasetItem The data object used to create the marker and the
-   *   timeline item.
+   * @param {Object} datasetItem The data object used to create the marker and
+   *   the timeline item.
    *
    * @param {string} groupName An identifier used to group and organize similar
    *   markers and Timeline items.
@@ -491,6 +475,7 @@ class Chronomap {
       throw new Error(`Map layer \`${name}\` already exists`);
     }
 
+    this.addLayerControlOnce();
     this.leafletMarkerLayers.set(name, new L.FeatureGroup());
     const layer = this.leafletMarkerLayers.get(name);
     this.leafletControlLayer.addOverlay(layer, name);
