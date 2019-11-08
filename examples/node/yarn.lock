@@ -1281,10 +1281,10 @@ chownr@^1.1.1:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.3.tgz#42d837d5239688d55f303003a508230fa6727142"
   integrity sha512-i70fVHhmV3DtTl6nqvZOnIjbY0Pe4kAUjwHj8z0zAdgBtYrJyYwLKCCuRBQ5ppkyL0AkN7HKRnETdmdp1zqNXw==
 
-chronomap@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/chronomap/-/chronomap-0.3.0.tgz#bb5dc712b10eeb4f713e6067cb14611d59f1ff73"
-  integrity sha512-xfrDbinpGtfwNdJHG/DZLyzEzgQ2mgUT97hmk1fLe9OxcyMAJO5GSRGVD6w4W5Rxc2qZxjgG7oJWcgn22KaVOw==
+chronomap@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/chronomap/-/chronomap-1.0.0.tgz#5865612d9cc0356bbea242294445cc22cb0cbc73"
+  integrity sha512-JDyDuq39qNQoV5sXnQkeZb7+MyW+Fl/bzj6SKt3Le/J1BiAUItleFHooFA+snEwvnNuVs4U9G+BKQZgnkYPRIw==
 
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
