@@ -3,6 +3,6 @@
   "dependencies": {
     "leaflet": "^1.5.1",
     "tachyons": "^4.10.0",
-    "vis-timeline": "^6.1.0"
+    "vis-timeline": "^7.4.4"
   }
 }
