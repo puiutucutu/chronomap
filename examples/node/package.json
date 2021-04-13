@@ -14,6 +14,6 @@
     "chronomap": "^1.0.0",
     "esm": "^3.2.25",
     "leaflet": "^1.5.1",
-    "vis-timeline": "^6.1.0"
+    "vis-timeline": "^7.4.4"
   }
 }
